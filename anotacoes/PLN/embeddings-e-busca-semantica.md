@@ -65,6 +65,11 @@ Anotações sobre o minilab "Busca vetorial" (materiais/PLN). Cobre embeddings, 
 - Projeta embeddings de alta dimensão para **2D preservando vizinhanças locais**.
 - Ótimo para ver "clusters" visuais; **não preserva distâncias globais** (pode distorcer).
 - Parâmetro importante: `perplexity` (ex.: 10, 15, 20) — afeta a granularidade dos agrupamentos.
+- `perplexity` maior considera mais vizinhos/estrutura global; **maior perplexity não garante aproximar pontos** — o layout se reorganiza sem relação direta com o tema.
+- **`random_state` (semente)**: o t-SNE é estocástico (amostragem aleatória de vizinhos e inicialização). Trocar a semente muda a forma/rotação do mapa, mas **quais textos ficam juntos não muda**, pois isso vem dos embeddings.
+  - Mesma semente → resultado idêntico (reprodutível).
+  - `init='pca'` dá inicialização determinística → variação entre sementes menor do que com `init='random'`.
+  - Conclusão didática: o layout visual não é "verdade" — use para ver clusters, não para interpretar posições globais.
 
 ## Avaliação: recall@k
 
